@@ -9,7 +9,7 @@ import android.widget.TextView
 
 class TaskAdapter(context: Context) : BaseAdapter () {
     private val layoutInflater: LayoutInflater
-    private var taskList = mutableListOf<String>()
+    private var taskList = mutableListOf<Task>()
 
     init {
         this.layoutInflater = LayoutInflater.from(context)
@@ -24,7 +24,7 @@ class TaskAdapter(context: Context) : BaseAdapter () {
     }
 
     override fun getItemId(position: Int): Long {
-        return 0
+        return taskList[position].id.toLong()
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -39,12 +39,13 @@ class TaskAdapter(context: Context) : BaseAdapter () {
         val textView2 = view.findViewById<TextView>(android.R.id.text2)
 
         //後でTaskクラスから情報を取得するように変更する
-        textView1.text = taskList[position]
+        textView1.text = taskList[position].title
+        textView2.text = taskList[position].date
 
         return view
     }
 
-    fun updateTaskList(taskList: List<String>) {
+    fun updateTaskList(taskList: List<Task>) {
         this.taskList.clear()
         this.taskList.addAll(taskList)
         notifyDataSetChanged()
