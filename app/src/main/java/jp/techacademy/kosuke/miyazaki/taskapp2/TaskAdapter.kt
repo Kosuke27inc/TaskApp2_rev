@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class TaskAdapter(context: Context) : BaseAdapter () {
+class TaskAdapter(context: Context) : BaseAdapter() {
     private val layoutInflater: LayoutInflater
     private var taskList = mutableListOf<Task>()
 

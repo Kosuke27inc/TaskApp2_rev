@@ -16,7 +16,7 @@ import io.realm.kotlin.notifications.UpdatedResults
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
+import io.realm.kotlin.delete
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.JAPANESE)
 
         realm.writeBlocking {
-            delete(Task::class)
+            delete<Task>()
 
             copyToRealm(Task().apply {
                 id = 0
